@@ -1,4 +1,9 @@
 <div>
+    {{-- <style>
+        th{
+            min-width: 80px !important;
+        }
+    </style> --}}
     <div class="container">
         <x-action-message on="deleted">
             <div class="box-action-message">
@@ -32,9 +37,8 @@
                     <option value="movie">{{ __('Movie') }}</option>
                 </select>
                 <select class="block w-full" wire:model.live='category_id'>
-
+                    <option value="">{{ __('Category') }}</option>
                     @foreach ($categories as $i => $c)
-                        <option value="">{{ __('Category') }}</option>
                         <option value="{{ $i }}">{{ $c }}</option>
                     @endforeach
                 </select>
@@ -48,7 +52,21 @@
             <table class="table w-full border">
                 <thead class="text-left bg-gray-100">
                     <tr class="border-b">
-                        <th class="p-2">
+                        @foreach ($columns as $key => $c)
+                            <th class="p-2 ">
+                                <button wire:click='sort("{{ $key }}")'>
+                                    {{ $c }}
+                                    @if ($key == $sortColumn)
+                                        @if ($sortDirection == 'asc')
+                                            &uarr;
+                                        @else
+                                            &darr;
+                                        @endif
+                                    @endif
+                                </button>
+                            </th>
+                        @endforeach
+                        {{-- <th class="p-2">
                             Id
                         </th>
                         <th class="p-2">
@@ -68,7 +86,7 @@
                         </th>
                         <th class="p-2">
                             Category
-                        </th>
+                        </th> --}}
                         <th class="p-2">
                             Actions
                         </th>
