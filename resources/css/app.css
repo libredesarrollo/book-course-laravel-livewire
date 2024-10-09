@@ -24,3 +24,41 @@
     @apply border-indigo-500 rounded-t bg-gray-100
 }
 /* form step */
+
+.link-secondary {
+    @apply inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150
+}
+
+/* ckeditor */
+.ck-editor__editable_inline{
+    min-height:400px
+  }
+  
+  .ck-editor__main h1{
+    font-size:40px !important;
+  }
+  
+  .ck-editor__main h2{
+    font-size:30px
+  }
+  
+  .ck-editor__main h3{
+    font-size:25px
+  }
+  
+  .ck-editor__main h4{
+    font-size:20px
+  }
+  
+  .ck-editor__main ul{
+    list-style-type:circle;
+    margin:10px;
+    padding:10px
+  }
+  
+  .ck-editor__main ol{
+    list-style-type:decimal;
+    margin:10px;
+    padding:10px
+  }
+/* ckeditor */

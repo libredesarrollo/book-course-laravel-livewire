@@ -23,7 +23,7 @@
 
             <a class="btn-secondary mb-3" href="{{ route('d-post-create') }}">Create</a>
 
-            <div class="grid grid-cols-2 gap-2 mb-3">
+            <div class="grid grid-cols-2 gap-2 my-3">
                 <select class="block w-full" wire:model.live='posted'>
                     <option value="">{{ __('Posted') }}</option>
                     <option value="not">{{ __('Not') }}</option>
@@ -45,8 +45,11 @@
                 <x-input wire:model.live='search' placeholder="{{ __('Search...') }}" />
                 <div class="grid grid-cols-2 gap-2">
                     <x-input wire:model='from' placeholder="From" type='date' />
-                    <x-input wire:model.live='to' placeholder="To" type='date' />
-                </div>
+                <x-input wire:model.live='to' placeholder="To" type='date' />
+            </div>
+            <div>
+                <a class="link-secondary" href="{{ route('d-post-index') }}">Clear Filter</a>
+            </div>
             </div>
 
             <table class="table w-full border">
@@ -152,4 +155,65 @@
         </x-confirmation-modal>
 
     </div>
+    {{-- @script --}}
+  
+        {{-- <script> --}}
+            // Livewire.hook('morph.updating', ({
+            //     el,
+            //     component,
+            //     toEl,
+            //     skip,
+            //     childrenOnly
+            // }) => {
+            //      console.log('morph.updating')
+            //      console.log(component)
+            // })
+
+            // Livewire.hook('morph.updated', ({
+            //     el,
+            //     component
+            // }) => {
+            //     console.log('morph.updated')
+            //     console.log(component)
+            //     console.log(el)
+            // })
+
+            // Livewire.hook('morph.removing', ({
+            //     el,
+            //     component,
+            //     skip
+            // }) => {
+            //     console.log('morph.removing')
+            //     console.log(component)
+            //     console.log(el)
+            // })
+
+            // Livewire.hook('morph.removed', ({
+            //     el,
+            //     component
+            // }) => {
+            //     console.log('morph.removed')
+            //     console.log(component)
+            //     console.log(el)
+            // })
+
+            // Livewire.hook('morph.adding', ({
+            //     el,
+            //     component
+            // }) => {
+            //     console.log('morph.adding')
+            //     console.log(component)
+            //     console.log(el)
+            // })
+
+            // Livewire.hook('morph.added', ({
+            //     el
+            // }) => {
+            //     console.log('morph.added')
+            //     console.log(el)
+            // })
+        {{-- </script> --}}
+    {{-- @endscript --}}
+
+
 </div>

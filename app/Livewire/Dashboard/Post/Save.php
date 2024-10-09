@@ -50,8 +50,9 @@ class Save extends Component
         }
     }
 
-    function submit()
+    function submit(/*$content*/)
     {
+        // dd($content);
         $this->validate();
 
         if ($this->post) {

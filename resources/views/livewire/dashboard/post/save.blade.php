@@ -1,7 +1,7 @@
 <div>
 
     <div class="container">
-
+ 
         <x-action-message on="created">
             <div class="box-action-message">
                 {{ __('Created post success') }}
@@ -15,6 +15,7 @@
         </x-action-message>
 
 
+        {{-- <x-form-section submit='submit(editor.getData())'> --}}
         <x-form-section submit='submit'>
 
             <x-slot name="title">
@@ -31,7 +32,7 @@
 
                 <div class="col-span-10 sm:col-span-3">
                     <x-label for="">Title</x-label>
-                    <x-input type="text" wire:model.live='title' class="w-full" />
+                    <x-input type="text" wire:model='title' class="w-full" />
                     @error('title')
                         {{ $message }}
                     @enderror
@@ -53,9 +54,11 @@
                     @enderror
                 </div>
 
-                <div class="col-span-10 sm:col-span-3">
+                <div class="col-span-10 sm:col-span-6" wire:ignore>
                     <x-label for="">Text</x-label>
-                    <textarea wire:model='text' class="block w-full"></textarea>
+                    {{-- <div id="ckcontent">{!! $text !!}</div> --}}
+                    <textarea id="ckcontent">{!! $text !!}</textarea>
+                    <textarea wire:model='text' class="block w-full hidden"></textarea>
                     @error('description')
                         {{ $message }}
                     @enderror
@@ -101,7 +104,6 @@
                 </div>
 
 
-
                 <div class="col-span-10 sm:col-span-3">
                     <x-label for="">Image</x-label>
                     <x-input type="file" wire:model='image' class="w-full" />
@@ -119,5 +121,16 @@
                 <x-button type="submit">Send</x-button>
             @endslot
         </x-form-section>
+
+        @vite(['resources/js/ckeditor.js'])
+
     </div>
 </div>
+
+@script
+<script>
+    editor.model.document.on('change:data', () => {
+        $wire.text = editor.getData()
+	})
+</script>
+@endscript
