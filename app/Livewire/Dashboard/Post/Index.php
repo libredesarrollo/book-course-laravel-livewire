@@ -44,6 +44,7 @@ class Index extends Component
         'category_id' => "Category",
     ];
 
+
     function selectPostToDelete(Post $post)
     {
         $this->confirmingDeletePost = true;

@@ -13,7 +13,13 @@
 
         <x-card>
             @slot('title')
-                List
+                List {{ $this->category }}
+                List {{ $this->category }}
+                List {{ $this->category }}
+                List {{ $this->category }}
+                List {{ $this->category }}
+                {{$this->getTime()}}
+                {{$this->getTime()}}
             @endslot
 
             <a class="btn-secondary mb-3" href="{{ route('d-category-create') }}">Create</a>

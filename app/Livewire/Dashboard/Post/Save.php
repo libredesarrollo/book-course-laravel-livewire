@@ -4,6 +4,7 @@ namespace App\Livewire\Dashboard\Post;
 
 use App\Models\Category;
 use App\Models\Post;
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class Save extends Component
@@ -19,6 +20,10 @@ class Save extends Component
     public $date;
 
     public $post;
+
+    #[Locked]
+    public $id;
+    // private $id;
 
     public function render()
     {
@@ -39,6 +44,7 @@ class Save extends Component
     function mount(?int $id = null)
     {
         if ($id != null) {
+            $this->id = $id;
             $this->post = Post::findOrFail($id);
             $this->title = $this->post->title;
             $this->text = $this->post->text;
@@ -54,7 +60,7 @@ class Save extends Component
     {
         // dd($content);
         $this->validate();
-
+        dd($this->id);
         if ($this->post) {
             $this->post->update(
                 [
