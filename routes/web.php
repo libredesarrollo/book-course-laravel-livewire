@@ -40,5 +40,10 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
 
 });
 
+Route::group(['prefix' => 'blog'], function(){
+    Route::get('/', App\Livewire\Blog\Index::class)->name('web.index');
+    Route::get('/{post:slug}', App\Livewire\Blog\Show::class)->name('web.show');
+});
+
 Route::get('/contact', App\Livewire\Contact\General::class)->name("contact");
 Route::get('/contact/{id}/{step?}', App\Livewire\Contact\General::class)->name("contact-edit");

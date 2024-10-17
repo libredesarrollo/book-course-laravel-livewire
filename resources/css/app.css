@@ -62,3 +62,7 @@
     padding:10px
   }
 /* ckeditor */
+
+.btn-primary {
+  @apply font-bold py-3 px-4 rounded bg-purple-600 hover:bg-purple-900 text-white tracking-wide hover:shadow-xl inline-block uppercase hover:-translate-y-1 transition duration-150
+}

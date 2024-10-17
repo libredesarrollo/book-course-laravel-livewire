@@ -25,8 +25,9 @@ class General extends Component
 
     protected $listeners = ['stepEvent'];
 
-    function mount(?int $id = null, ?int $step = null)
+    function mount(?int $id = null, ?int $step = null, string $subject = '')
     {
+        $this->subject = $subject;
         if ($id != null) {
             $this->contactGeneral = ContactGeneral::findOrFail($id);
             $this->subject = $this->contactGeneral->subject;
@@ -89,7 +90,7 @@ class General extends Component
                     'type' => $this->type,
                     'message' => $this->message,
                 ])->id;
-                $this->redirectRoute('contact-edit', ['id' => $this->pk, 'step' => 1]);
+                //$this->redirectRoute('contact-edit', ['id' => $this->pk, 'step' => 1]);
             }
         }
 
