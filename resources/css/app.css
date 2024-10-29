@@ -3,66 +3,75 @@
 @tailwind utilities;
 
 [x-cloak] {
-    display: none;
+  display: none;
 }
 
 .container {
-    @apply max-w-7xl mx-auto py-10 sm:px-6 lg:px-8
+  @apply max-w-7xl mx-auto py-10 sm:px-6 lg:px-8
 }
-.box-action-message{
-    @apply py-2 px-4 bg-green-300 border rounded mb-4
+
+.box-action-message {
+  @apply py-2 px-4 bg-green-300 border rounded mb-4
 }
-.btn-secondary{
-    @apply inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150 mt-2 me-2
+
+.btn-secondary {
+  @apply inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150 mt-2 me-2
 }
 
 /* form step */
 .step {
-    @apply font-medium px-6 py-2 border-b-2 tracking-wider
+  @apply font-medium px-6 py-2 border-b-2 tracking-wider
 }
+
 .active {
-    @apply border-indigo-500 rounded-t bg-gray-100
+  @apply border-indigo-500 rounded-t bg-gray-100
 }
+
 /* form step */
 
 .link-secondary {
-    @apply inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150
+  @apply inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150
 }
 
 /* ckeditor */
-.ck-editor__editable_inline{
-    min-height:400px
-  }
-  
-  .ck-editor__main h1{
-    font-size:40px !important;
-  }
-  
-  .ck-editor__main h2{
-    font-size:30px
-  }
-  
-  .ck-editor__main h3{
-    font-size:25px
-  }
-  
-  .ck-editor__main h4{
-    font-size:20px
-  }
-  
-  .ck-editor__main ul{
-    list-style-type:circle;
-    margin:10px;
-    padding:10px
-  }
-  
-  .ck-editor__main ol{
-    list-style-type:decimal;
-    margin:10px;
-    padding:10px
-  }
+.ck-editor__editable_inline {
+  min-height: 400px
+}
+
+.ck-editor__main h1 {
+  font-size: 40px !important;
+}
+
+.ck-editor__main h2 {
+  font-size: 30px
+}
+
+.ck-editor__main h3 {
+  font-size: 25px
+}
+
+.ck-editor__main h4 {
+  font-size: 20px
+}
+
+.ck-editor__main ul {
+  list-style-type: circle;
+  margin: 10px;
+  padding: 10px
+}
+
+.ck-editor__main ol {
+  list-style-type: decimal;
+  margin: 10px;
+  padding: 10px
+}
+
 /* ckeditor */
 
 .btn-primary {
   @apply font-bold py-3 px-4 rounded bg-purple-600 hover:bg-purple-900 text-white tracking-wide hover:shadow-xl inline-block uppercase hover:-translate-y-1 transition duration-150
+}
+
+.box {
+  @apply py-4 px-4 border
 }

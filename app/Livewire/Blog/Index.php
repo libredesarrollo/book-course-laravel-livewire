@@ -43,7 +43,7 @@ class Index extends Component
 
         $categories = Category::pluck("title", "id");
         $from = $this->from;
-
+      
         $posts = Post::when($this->search, function (Builder $query, string $search) {
             $query->where(function ($query) use ($search) {
                 $query->orWhere('id', 'like', "%" . $search . "%")
@@ -57,9 +57,7 @@ class Index extends Component
         ->when($this->category_id, function(Builder $query, $category_id) {
             $query->where('category_id', $category_id); 
         })
-        ->when($this->type, function(Builder $query, $type) {
-            $query->where('type', $type); 
-        })
+       
         ->when($this->to, function(Builder $query, $to) use($from) {
             $query->whereBetween('date', [date($from), date($this->to)]);
         })->with('category')
