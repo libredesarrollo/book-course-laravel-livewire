@@ -1,5 +1,19 @@
-import { Position } from 'ckeditor5'
+import { Alignment, Position } from 'ckeditor5'
 import toast from 'toast-me'
+
+// import { Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+
+// import Alpine from 'alpinejs'
+// import { persist } from '@alpinejs/persist'
+import Sortable from 'sortablejs'
+
+// console.log(persist)
+// Alpine.plugin(p)
+
+// console.log(Alpine)
+
+// window.Alpine = Alpine
+window.Sortable = Sortable
 
 window.toast = toast
 

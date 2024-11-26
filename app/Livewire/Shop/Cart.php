@@ -55,8 +55,7 @@ class Cart extends Component
         if (auth()->check()) {
             $this->total = ShoppingCart::where('user_id', auth()->id())->sum('count');
         }
-        // TODO leer la sesion
-        return 0;
+        // TODO read sesion
     }
 
     public function render()

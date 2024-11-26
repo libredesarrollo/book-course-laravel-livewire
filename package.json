@@ -16,7 +16,10 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@alpinejs/persist": "^3.14.3",
+        "alpinejs": "^3.14.3",
         "ckeditor5": "^43.2.0",
+        "sortablejs": "^1.15.3",
         "toast-me": "^1.5.0"
     }
 }
