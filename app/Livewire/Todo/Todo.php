@@ -13,6 +13,10 @@ class Todo extends Component
 
     // protected $listeners = ['addTodo', 'setOrden', 'update'];
 
+    protected $rules = [
+        'task' => 'required|min:2|max:255'
+    ];
+
     public function render()
     {
         $this->todos = ModelsTodo::orderBy('count')->where('user_id', auth()->id())->get()->toArray();
@@ -21,6 +25,8 @@ class Todo extends Component
 
     function save()
     {
+        $this->validate();
+
         $todo = ModelsTodo::create(
             [
                 'name' => $this->task,
@@ -36,7 +42,7 @@ class Todo extends Component
     function setOrden($pks)
     {
         // foreach($this->todos as $count => $t){
-
+        //dd($pks);
         foreach ($pks as $count => $t) {
             ModelsTodo::
                 where('user_id', auth()->id())
@@ -59,7 +65,7 @@ class Todo extends Component
     #[On('update')]
     function update($todo = null)
     {
-        if($todo == null) {
+        if ($todo == null) {
             return;
         }
         ModelsTodo::where('user_id', auth()->id())

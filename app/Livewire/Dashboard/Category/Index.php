@@ -14,12 +14,6 @@ class Index extends Component
     public $confirmingDeleteCategory;
     public $categoryToDelete;
 
-    function selectCategoryToDelete(Category $category)
-    {
-        $this->confirmingDeleteCategory = true;
-        $this->categoryToDelete = $category;
-    }
-
 
     // function getCategoryProperty()
     #[Computed()]
@@ -27,19 +21,26 @@ class Index extends Component
     {
         sleep(1);
         return time();
-        
+
     }
     function getTime()
     {
         sleep(1);
         return time();
-        
+
     }
 
     public function render()
     {
         $categories = Category::paginate(2);
         return view('livewire.dashboard.category.index', compact('categories'));
+    }
+
+    // delete
+    function selectCategoryToDelete(Category $category)
+    {
+        $this->confirmingDeleteCategory = true;
+        $this->categoryToDelete = $category;
     }
 
     function delete(/*Category $category*/)

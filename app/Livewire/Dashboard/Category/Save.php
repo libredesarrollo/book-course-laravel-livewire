@@ -6,6 +6,7 @@ use App\Models\Category;
 use Livewire\Component;
 
 use Livewire\WithFileUploads;
+use Storage;
 
 class Save extends Component
 {
@@ -63,6 +64,12 @@ class Save extends Component
 
         // upload
         if($this->image){
+
+            // delete old img
+            if($this->category->image){
+                Storage::disk('public_upload')->delete('images/category/'.$this->category->image);
+            }
+
             $imageName = $this->category->slug . '.'.$this->image->getClientOriginalExtension();
             $this->image->storeAs('images/category',$imageName,'public_upload');
 

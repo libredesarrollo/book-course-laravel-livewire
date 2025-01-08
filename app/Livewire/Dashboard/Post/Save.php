@@ -60,7 +60,7 @@ class Save extends Component
     {
         // dd($content);
         $this->validate();
-        dd($this->id);
+        // dd($this->id);
         if ($this->post) {
             $this->post->update(
                 [

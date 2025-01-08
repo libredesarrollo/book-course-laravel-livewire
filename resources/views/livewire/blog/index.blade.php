@@ -1,7 +1,7 @@
 <div>
     <x-card>
         @slot('title')
-            Listado
+            Post List
         @endslot
 
 

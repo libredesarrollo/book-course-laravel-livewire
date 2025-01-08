@@ -16,8 +16,12 @@
         <form wire:submit.prevent="save()" class="flex gap-2 mt-2">
             <label class="mt-2">Create</label>
             <x-input type="text" wire:model="task" class="form-control" />
+
             <x-button type="submit">Save</x-button>
         </form>
+        @error('task')
+            <p class="text-red-800">{{ $message }}</p>
+        @enderror
         {{-- create --}}
 
         {{-- list --}}
@@ -84,7 +88,9 @@
                             // var todosAux = []
                             var todosPKs = []
 
-                            document.querySelectorAll('.list-group li').forEach((todoHTML => {
+                            //document.querySelectorAll('.list-group li').forEach((todoHTML => {
+
+                            $refs.items.querySelectorAll('li').forEach((todoHTML => {
                                 todosPKs.push(todoHTML.id)
                                 // this.todos.forEach(todo => {
                                 //     if(todo.id == todoHTML.id){
@@ -92,7 +98,7 @@
                                 //     }
                                 // })
                             }))
-
+                            // console.log(todosPKs)
                             // this.todos = todosAux
                             Livewire.dispatch('setOrden', {
                                 pks: todosPKs

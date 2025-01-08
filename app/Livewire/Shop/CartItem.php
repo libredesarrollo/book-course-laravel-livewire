@@ -42,10 +42,11 @@ class CartItem extends Component
 
         // dd($post);
         $cart = session('cart', []);
-       
+  
         // delete
         if ($count <= 0) {
             if (Arr::exists($cart, $post->id)) {
+                
                 unset($cart[$post->id]);
                 unset($this->item);
                 unset($this->count);
@@ -53,6 +54,7 @@ class CartItem extends Component
                 $this->saveDB($cart);
                 $this->dispatch('itemDelete');
             }
+            //  dd($count);
             return;
         }
 
@@ -82,7 +84,7 @@ class CartItem extends Component
 
         if (auth()->check()) {
             $control = time();
-
+            // dd($cart);
             foreach ($cart as $c) {
                 ShoppingCart::updateOrCreate(
                     [
