@@ -1,14 +1,29 @@
 <div>
 
     <x-action-message on="created">
-        {{ __('Created category success') }}
+        <div class="box-action-message">
+            {{ __('Created category success') }}
+        </div>
+        
     </x-action-message>
-
 
     <x-action-message on="updated">
-        {{ __('Updated category success') }}
+        <div class="box-action-message">
+            {{ __('Updated category success') }}
+        </div>
     </x-action-message>
 
+    <flux:heading>
+        
+    @if ($category)
+        {{ __('Category edit: ') }} <span class="font-bold">{{ $category->title }}</span>
+    @else
+        {{ __('Category create') }}
+    @endif
+    </flux:heading>
+    <flux:text class="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing.</flux:text>
+
+    <div class="separation"></div>
 
     <form wire:submit.prevent="submit" class="flex flex-col gap-4">
         <!-- <input type="text" wire:model="title">

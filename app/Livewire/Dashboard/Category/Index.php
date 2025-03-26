@@ -6,10 +6,13 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 use App\Models\Category;
+use Flux\Flux;
 
 class Index extends Component
 {
     use WithPagination;
+
+    public $categoryToDelete;
 
     public function render()
     {
@@ -18,8 +21,13 @@ class Index extends Component
         return view('livewire.dashboard.category.index', compact('categories'));
     }
 
-    function delete(Category $category){
+    function selectCategodyToDelete(Category $category){
+        $this->categoryToDelete = $category;
+    }
+
+    function delete(){
         $this->dispatch("deleted");
-        $category->delete();
+        Flux::modal("delete-category")->close();
+        $this->categoryToDelete->delete();
     }
 }
