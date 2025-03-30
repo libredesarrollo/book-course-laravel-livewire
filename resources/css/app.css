@@ -52,7 +52,7 @@
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],
@@ -78,3 +78,13 @@ select:focus[data-flux-control] {
 .separation {
     @apply my-6 border-0 bg-zinc-800/5 dark:bg-white/10 h-px w-full
 }
+
+/* form step */
+.step {
+    @apply font-medium px-6 py-2 border-b-2 tracking-wider
+}
+
+.active {
+    @apply border-indigo-500 rounded-t bg-gray-100
+}
+/* form step */
