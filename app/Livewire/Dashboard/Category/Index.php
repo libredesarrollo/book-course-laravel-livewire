@@ -21,7 +21,7 @@ class Index extends Component
         return view('livewire.dashboard.category.index', compact('categories'));
     }
 
-    function selectCategodyToDelete(Category $category){
+    function selectCategoryToDelete(Category $category){
         $this->categoryToDelete = $category;
     }
 

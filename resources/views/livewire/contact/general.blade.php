@@ -14,7 +14,7 @@
     </div>
     <div>
         @if ($step == 1)
-            <form wire:submit.prevent='submit'>
+            <form wire:submit.prevent='submit' class="flex flex-col max-w-sm mx-auto">
                 <flux:label>{{ __('Subject') }}</flux:label>
                 <flux:error name='subject' />
                 <flux:input type='text' wire:model='subject'  />
@@ -36,11 +36,11 @@
                 </div>
             </form>
         @elseif ($step == 2)
-            @livewire('contact.company', ['parentId' => $pk])
+            @livewire('volt.contact.company', ['parentId' => $pk])
         @elseif ($step == 2.5)
-            @livewire('contact.person', ['parentId' => $pk])
+            @livewire('volt.contact.person', ['parentId' => $pk])
         @elseif ($step == 3)
-            @livewire('contact.detail', ['parentId' => $pk])
+            @livewire('volt.contact.detail', ['parentId' => $pk])
         @else
             END
         @endif

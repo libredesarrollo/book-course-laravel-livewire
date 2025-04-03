@@ -28,6 +28,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/create', App\Livewire\Dashboard\Category\Save::class)->name("d-category-create");
             Route::get('/edit/{id}', App\Livewire\Dashboard\Category\Save::class)->name("d-category-edit");
 
+            // post
+            Route::group(['prefix' => 'post'], function () {
+                Route::get('/', App\Livewire\Dashboard\Post\Index::class)->name("d-post-index");        // listado
+                Route::get('/create', App\Livewire\Dashboard\Post\Save::class)->name("d-post-create");  // crear
+                Route::get('/edit/{id}', App\Livewire\Dashboard\Post\Save::class)->name("d-post-edit"); // edit
+            });
+
+
             // demo volt
             Volt::route('volt', 'volt.dashboard.category.index')->name('volt-d-category-index');
             Volt::route('volt/create', 'volt.dashboard.category.save')->name('volt-d-category-create');
@@ -51,8 +59,12 @@ Route::middleware(['auth'])->group(function () {
         // });
     });
 
-    Route::get('/contact', App\Livewire\Contact\General::class)->name("contact");
-    Route::get('/contact/{id}/{step?}', App\Livewire\Contact\General::class)->name("contact-edit");
+    Route::get('contact', App\Livewire\Contact\General::class)->name("contact");
+    Route::get('contact/{id}/{step?}', App\Livewire\Contact\General::class)->name("contact-edit");
+
+    // demo volt
+    Volt::route('volt/contact', 'volt.contact.general')->name('volt-d-category-index');
+    Volt::route('volt/contact/{id}/{step?}', 'volt.contact.general')->name('volt-d-category-create');
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
