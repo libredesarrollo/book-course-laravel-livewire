@@ -52,6 +52,10 @@
             <x-input wire:model='from' placeholder="From" type='date' />
             <x-input wire:model.live='to' placeholder="To" type='date' />
         </div>
+        <div>
+            <flux:button href="{{ route('d-post-index') }}" class="ml-3" variant='filled' >{{ __('Clear') }}
+            </flux:button>
+        </div>
     </div>
     {{-- filter --}}
 
