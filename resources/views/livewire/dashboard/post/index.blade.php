@@ -28,7 +28,7 @@
     </flux:modal>
 
     {{-- filter --}}
-    {{-- <div class="grid grid-cols-2 gap-2 my-3">
+    <div class="grid grid-cols-2 gap-2 my-3">
         <flux:select class="block w-full" wire:model.live='posted'>
             <option value="">{{ __('Posted') }}</option>
             <option value="not">{{ __('Not') }}</option>
@@ -47,18 +47,18 @@
                 <option value="{{ $i }}">{{ $c }}</option>
             @endforeach
         </flux:select>
-        <x-input wire:model.live='search' placeholder="{{ __('Search...') }}" />
+        <flux:input wire:model.live='search' placeholder="{{ __('Search...') }}" />
         <div class="grid grid-cols-2 gap-2">
             <x-input wire:model='from' placeholder="From" type='date' />
             <x-input wire:model.live='to' placeholder="To" type='date' />
         </div>
-    </div> --}}
+    </div>
     {{-- filter --}}
 
     <div class="overflow-x-auto shadow-md rounded-lg">
         <table class="table w-full border">
             <thead class="rounded-lg text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                {{-- <tr>
+                <tr>
                     @foreach ($columns as $key => $c)
                         <th>
                             <button wire:click='sort("{{ $key }}")'>
@@ -71,9 +71,9 @@
                                     @endif
                                 @endif
                             </button>
-                        </th> 
-                    @endforeach--}}
-                    <th class="p-2">
+                        </th>
+                    @endforeach
+                    {{-- <th class="p-2">
                         Id
                     </th>
                     <th class="p-2">
@@ -93,7 +93,7 @@
                     </th>
                     <th class="p-2">
                         Category
-                    </th> 
+                    </th> --}}
                     <th class="p-2">
                         Actions
                     </th>

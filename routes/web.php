@@ -28,18 +28,21 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/create', App\Livewire\Dashboard\Category\Save::class)->name("d-category-create");
             Route::get('/edit/{id}', App\Livewire\Dashboard\Category\Save::class)->name("d-category-edit");
 
-            // post
-            Route::group(['prefix' => 'post'], function () {
-                Route::get('/', App\Livewire\Dashboard\Post\Index::class)->name("d-post-index");        // listado
-                Route::get('/create', App\Livewire\Dashboard\Post\Save::class)->name("d-post-create");  // crear
-                Route::get('/edit/{id}', App\Livewire\Dashboard\Post\Save::class)->name("d-post-edit"); // edit
-            });
-
-
             // demo volt
             Volt::route('volt', 'volt.dashboard.category.index')->name('volt-d-category-index');
             Volt::route('volt/create', 'volt.dashboard.category.save')->name('volt-d-category-create');
             Volt::route('volt/edit/{id}', 'volt.dashboard.category.save')->name('volt-d-category-edit');
+        });
+
+        // post
+        Route::group(['prefix' => 'post'], function () {
+            Route::get('/', App\Livewire\Dashboard\Post\Index::class)->name("d-post-index");        // listado
+            Route::get('/create', App\Livewire\Dashboard\Post\Save::class)->name("d-post-create");  // crear
+            Route::get('/edit/{id}', App\Livewire\Dashboard\Post\Save::class)->name("d-post-edit"); // edit
+
+            Volt::route('volt', 'volt.dashboard.post.index')->name('volt-d-post-index');
+            Volt::route('volt/create', 'volt.dashboard.post.save')->name('volt-d-post-create');
+            Volt::route('volt/edit/{id}', 'volt.dashboard.post.save')->name('volt-d-post-edit');
         });
 
 

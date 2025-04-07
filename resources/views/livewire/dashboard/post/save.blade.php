@@ -28,16 +28,15 @@
 
         <form wire:submit.prevent="submit" class="flex flex-col gap-4">
 
+            <flux:input wire:model="form.title" :label="__('Title')" />
+            <flux:input wire:model="form.date" :label="__('Date')" type="date" />
+            <flux:textarea wire:model="form.description" :label="__('Description')" />
 
-            <flux:input wire:model="title" :label="__('Title')" />
-            <flux:input wire:model="date" :label="__('Date')" type="date" />
-            <flux:textarea wire:model="description" :label="__('Description')" />
-
-            <flux:textarea wire:model="text" :label="__('Text')" />
+            <flux:textarea wire:model="form.text" :label="__('Text')" />
 
 
             <flux:label>{{ __('Posted') }}</flux:label>
-            <flux:select wire:model='posted'>
+            <flux:select wire:model='form.posted'>
                 <option value=""></option>
                 <option value="yes">Yes</option>
                 <option value="not">Not</option>
@@ -45,24 +44,23 @@
 
 
             <flux:label>{{ __('Type') }}</flux:label>
-            <flux:select wire:model='type'>
+            <flux:select wire:model='form.type'>
                 <option value=""></option>
-                <option value="Advert">Advert</option>
+                <option value="advert">Advert</option>
                 <option value="post">Post</option>
                 <option value="course">Course</option>
                 <option value="movie">Movie</option>
             </flux:select>
 
             <flux:label>{{ __('Category') }}</flux:label>
-            <flux:select wire:model='category_id'>
+            <flux:select wire:model='form.category_id'>
                 <option value=""></option>
                 @foreach ($categories as $c)
                     <option value="{{ $c->id }}">{{ $c->title }}</option>
                 @endforeach
             </flux:select>
 
-            <flux:label>{{ __('Image') }}</flux:label>
-            <flux:input wire:model="image" type='file' :label="__('Image')" />
+            <flux:input wire:model="form.image" type='file' :label="__('Image')" />
 
             @if ($post && $post->image)
                 <img class="w-40 my-3" src="{{ $post->getImageUrl() }}" alt="{{ $post->title }}">
