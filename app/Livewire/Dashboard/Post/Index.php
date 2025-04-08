@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Dashboard\Post;
 
-use App\Livewire\Dashboard\OrderTrait;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 
 use Livewire\Attributes\Url;
@@ -13,6 +12,7 @@ use Flux\Flux;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Livewire\Dashboard\OrderTrait;
 
 class Index extends Component
 {
