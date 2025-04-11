@@ -34,7 +34,7 @@ new class extends Component {
         'category_id' => 'required',
         'posted' => 'required',
         'text' => 'required|min:2|max:5000',
-        'image' => 'nullable|image|max:1024'
+        'image' => 'nullable|image|max:1024',
     ];
 
     function mount(?int $id = null)
@@ -60,32 +60,28 @@ new class extends Component {
         $this->validate();
         // dd($this->id);
         if ($this->post) {
-            $this->post->update(
-                [
-                    'title' => $this->title,
-                    'text' => $this->text,
-                    'description' => $this->description,
-                    'category_id' => $this->category_id,
-                    'date' => $this->date,
-                    'type' => $this->type,
-                    'posted' => $this->posted,
-                    'slug' => str($this->title)->slug(),
-                ]
-            );
+            $this->post->update([
+                'title' => $this->title,
+                'text' => $this->text,
+                'description' => $this->description,
+                'category_id' => $this->category_id,
+                'date' => $this->date,
+                'type' => $this->type,
+                'posted' => $this->posted,
+                'slug' => str($this->title)->slug(),
+            ]);
             $this->dispatch('updated');
         } else {
-            $this->post = Post::create(
-                [
-                    'title' => $this->title,
-                    'text' => $this->text,
-                    'description' => $this->description,
-                    'category_id' => $this->category_id,
-                    'date' => $this->date,
-                    'type' => $this->type,
-                    'posted' => $this->posted,
-                    'slug' => str($this->title)->slug(),
-                ]
-            );
+            $this->post = Post::create([
+                'title' => $this->title,
+                'text' => $this->text,
+                'description' => $this->description,
+                'category_id' => $this->category_id,
+                'date' => $this->date,
+                'type' => $this->type,
+                'posted' => $this->posted,
+                'slug' => str($this->title)->slug(),
+            ]);
             $this->dispatch('created');
         }
 
@@ -95,7 +91,7 @@ new class extends Component {
             $this->image->storeAs('images/post', $imageName, 'public_upload');
 
             $this->post->update([
-                'image' => $imageName
+                'image' => $imageName,
             ]);
         }
     }
@@ -136,7 +132,11 @@ new class extends Component {
             <flux:input wire:model="date" :label="__('Date')" type="date" />
             <flux:textarea wire:model="description" :label="__('Description')" />
 
-            <flux:textarea wire:model="text" :label="__('Text')" />
+            {{-- <flux:textarea wire:model="text" :label="__('Text')" /> --}}
+            <flux:label>{{ __('Text') }}</flux:label>
+            <div wire:ignore class="col-span-6 sm:col-span-4">
+                <div id="ckcontent">{!! $text !!}</div>
+            </div>
 
 
             <flux:label>{{ __('Posted') }}</flux:label>
@@ -177,6 +177,14 @@ new class extends Component {
             </div>
 
         </form>
+        @vite(['resources/js/ckeditor.js'])
+        @script
+            <script>
+                editor.model.document.on('change:data', () => {
+                    $wire.text = editor.getData()
+                })
+            </script>
+        @endscript
 
 
     </div>

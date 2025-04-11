@@ -32,8 +32,11 @@
             <flux:input wire:model="form.date" :label="__('Date')" type="date" />
             <flux:textarea wire:model="form.description" :label="__('Description')" />
 
-            <flux:textarea wire:model="form.text" :label="__('Text')" />
-
+            {{-- <flux:textarea wire:model="form.text" :label="__('Text')" /> --}}
+            <flux:label>{{ __('Text') }}</flux:label>
+            <div wire:ignore class="col-span-6 sm:col-span-4">
+                <div id="ckcontent">{!! $form->text !!}</div>
+            </div>
 
             <flux:label>{{ __('Posted') }}</flux:label>
             <flux:select wire:model='form.posted'>
@@ -41,7 +44,6 @@
                 <option value="yes">Yes</option>
                 <option value="not">Not</option>
             </flux:select>
-
 
             <flux:label>{{ __('Type') }}</flux:label>
             <flux:select wire:model='form.type'>
@@ -74,6 +76,14 @@
 
         </form>
 
+        @vite(['resources/js/ckeditor.js'])
 
     </div>
 </div>
+@script
+<script>
+    editor.model.document.on('change:data', () => {
+        $wire.form.text = editor.getData()
+	})
+</script>
+@endscript

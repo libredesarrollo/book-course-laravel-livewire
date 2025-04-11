@@ -87,4 +87,45 @@ select:focus[data-flux-control] {
 .active {
     @apply border-indigo-500 rounded-t bg-gray-100
 }
+
 /* form step */
+
+
+/* ckeditor */
+.ck-editor__main {
+    color: #000;
+}
+
+.ck-editor__editable_inline {
+    min-height: 400px
+}
+
+.ck-editor__main h1 {
+    font-size: 40px !important;
+}
+
+.ck-editor__main h2 {
+    font-size: 30px
+}
+
+.ck-editor__main h3 {
+    font-size: 25px
+}
+
+.ck-editor__main h4 {
+    font-size: 20px
+}
+
+.ck-editor__main ul {
+    list-style-type: circle;
+    margin: 10px;
+    padding: 10px
+}
+
+.ck-editor__main ol {
+    list-style-type: decimal;
+    margin: 10px;
+    padding: 10px
+}
+
+/* ckeditor */
