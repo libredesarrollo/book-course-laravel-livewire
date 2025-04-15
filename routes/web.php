@@ -74,4 +74,9 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', App\Livewire\Blog\Index::class)->name('web.index');
+    Route::get('/{post:slug}', App\Livewire\Blog\Show::class)->name('web.show');
+});
+
 require __DIR__ . '/auth.php';

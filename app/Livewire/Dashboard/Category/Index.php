@@ -30,4 +30,9 @@ class Index extends Component
         Flux::modal("delete-category")->close();
         $this->categoryToDelete->delete();
     }
+
+    // function delete(Category $category){
+    //     $this->dispatch("deleted");
+    //     $category->delete();
+    // }
 }

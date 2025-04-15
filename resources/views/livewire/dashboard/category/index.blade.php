@@ -67,6 +67,9 @@
                         <!-- <flux:button class="ml-3" variant='danger' size="xs" wire:click="delete({{ $c }})">
                             {{ __('Delete') }}
                         </flux:button> -->
+                        {{-- <flux:button class="ml-3" variant='danger' size="xs" wire:click="delete({{ $c }})" wire:confirm="Are you sure you want to delete this category?">
+                            {{ __('Delete') }}
+                        </flux:button>  --}}
                     </td>
                 </tr>
                 @endforeach
