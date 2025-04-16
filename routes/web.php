@@ -72,9 +72,14 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+    
 });
 
 Route::group(['prefix' => 'blog'], function () {
+
+    Volt::route('volt', 'volt.blog.index')->name('volt.web.index');
+    Volt::route('volt/{post:slug}', 'volt.blog.show')->name('volt.web.show');
+
     Route::get('/', App\Livewire\Blog\Index::class)->name('web.index');
     Route::get('/{post:slug}', App\Livewire\Blog\Show::class)->name('web.show');
 });
