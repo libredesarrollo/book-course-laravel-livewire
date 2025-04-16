@@ -75,6 +75,12 @@ Route::middleware(['auth'])->group(function () {
     
 });
 
+//shopping
+Route::group(['prefix' => 'shop'], function () {
+    Route::get('/cart-list', App\Livewire\Shop\Cart::class)->name('shop.cart.list');
+});
+
+// blog
 Route::group(['prefix' => 'blog'], function () {
 
     Volt::route('volt', 'volt.blog.index')->name('volt.web.index');

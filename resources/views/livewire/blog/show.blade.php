@@ -21,8 +21,8 @@
 
 
         @if ($post->type == 'advert')
-            {{-- @livewire('shop.cart') --}}
-            {{-- @livewire('shop.cart', ['post' => $post, 'type' => 'add']) --}}
+            @livewire('shop.cart')
+            @livewire('shop.cart', ['post' => $post, 'type' => 'add'])
         @endif
 
         <div>{!! $post->text !!}</div>
