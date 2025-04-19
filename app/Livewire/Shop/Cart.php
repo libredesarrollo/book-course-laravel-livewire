@@ -2,11 +2,13 @@
 
 namespace App\Livewire\Shop;
 
+use Livewire\Component;
+use Livewire\Attributes\Layout;
+
 use App\Models\Post;
 use App\Models\ShoppingCart;
-use Livewire\Attributes\Computed;
-use Livewire\Component;
 
+#[Layout('layouts.web')]
 class Cart extends Component
 {
 
