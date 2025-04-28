@@ -50,6 +50,7 @@ class Cart extends Component
     function addItem()
     {
         $this->dispatch('addItemToCart', $this->post);
+        // $this->dispatch('cartUpdated');
     }
 
    public function getTotal()
@@ -57,7 +58,7 @@ class Cart extends Component
         if (auth()->check()) {
             $this->total = ShoppingCart::where('user_id', auth()->id())->sum('count');
         }
-        // TODO read sesion
+        // 
     }
 
     public function render()

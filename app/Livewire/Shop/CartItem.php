@@ -53,6 +53,7 @@ class CartItem extends Component
                 session(['cart' => $cart]);
                 $this->saveDB($cart);
                 $this->dispatch('itemDelete');
+                
             }
             //  dd($count);
             return;
@@ -103,9 +104,12 @@ class CartItem extends Component
                 ShoppingCart::whereNot('control', $control)
                     ->where('user_id', auth()->id())
                     ->delete();
+
+                    
             }
 
         }
+        $this->dispatch('refreshComponent');
 
     }
 
