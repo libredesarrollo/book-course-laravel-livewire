@@ -78,6 +78,7 @@ Route::middleware(['auth'])->group(function () {
 //shopping
 Route::group(['prefix' => 'shop'], function () {
     Route::get('/cart-list', App\Livewire\Shop\Cart::class)->name('shop.cart.list');
+    Volt::route('volt/cart-list', 'volt.shop.cart')->name('volt.shop.cart.list');
 });
 
 // blog
@@ -88,6 +89,13 @@ Route::group(['prefix' => 'blog'], function () {
 
     Route::get('/', App\Livewire\Blog\Index::class)->name('web.index');
     Route::get('/{post:slug}', App\Livewire\Blog\Show::class)->name('web.show');
+});
+
+Route::group([
+    'middleware' => ['auth'],
+    'prefix' => 'todo'
+], function () {
+    Route::get('/', App\Livewire\Todo\Todo::class)->name('todo.list');
 });
 
 require __DIR__ . '/auth.php';

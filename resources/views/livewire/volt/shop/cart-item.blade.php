@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Livewire\Shop;
+use Livewire\Volt\Component;
 
-use Livewire\Component;
-
-use Illuminate\Support\Arr;
 use Livewire\Attributes\On;
+use Illuminate\Support\Arr;
 
 use App\Models\Post;
 use App\Models\ShoppingCart;
 
-class CartItem extends Component
-{
-
-
+new class extends Component {
     // protected $listeners = ['addItemToCart' => 'add'];
 
     public $count; // count
@@ -77,10 +72,6 @@ class CartItem extends Component
         $this->saveDB($cart);
 
     }
-    public function render()
-    {
-        return view('livewire.shop.cart-item');
-    }
 
     private function saveDB($cart)
     {
@@ -114,5 +105,16 @@ class CartItem extends Component
         $this->dispatch('refreshComponent');
 
     }
+}; ?>
 
-}
+<div>
+    <div class="box mb-3">
+        @if ($item)
+            <div class="flex flex-row gap-2 items-center item_{{ $item->id }}" >
+                <flux:input wire:keydown.enter='add({{ $item }},$wire.count)' wire:model='count' class="!w-20"
+                    type="number"/>
+                <flux:label>{{ $item->title }}</flux:label>
+            </div>
+        @endif
+    </div>
+</div>
