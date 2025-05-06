@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Todo;
 
-use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Attributes\On;
 use App\Models\Todo as ModelsTodo;
 
 class Todo extends Component

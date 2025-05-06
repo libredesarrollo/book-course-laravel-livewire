@@ -96,6 +96,7 @@ Route::group([
     'prefix' => 'todo'
 ], function () {
     Route::get('/', App\Livewire\Todo\Todo::class)->name('todo.list');
+    Volt::route('volt', 'volt.todo')->name('volt.todo.list');
 });
 
 require __DIR__ . '/auth.php';
