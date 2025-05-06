@@ -15,15 +15,6 @@ new class extends Component {
         'task' => 'required|min:2|max:255',
     ];
 
-    // public function render()
-    // {
-    //     $this->todos = ModelsTodo::orderBy('count')
-    //         ->where('user_id', auth()->id())
-    //         ->get()
-    //         ->toArray();
-    //     return view('livewire.todo.todo');
-    // }
-
     function mount()
     {
         $this->todos = ModelsTodo::orderBy('count')
