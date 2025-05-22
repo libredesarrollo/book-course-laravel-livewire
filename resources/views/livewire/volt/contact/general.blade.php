@@ -6,9 +6,7 @@ use Livewire\Attributes\{Layout};
 
 use App\Models\ContactGeneral;
 
-new
-#[Layout('layouts.contact')]
-class extends Component {
+new #[Layout('layouts.contact')] class extends Component {
     #[Validate('required|min:2|max:255')]
     public $subject;
 
@@ -17,6 +15,9 @@ class extends Component {
 
     #[Validate('required|min:2')]
     public $message;
+
+    // demo
+    public $extra;
 
     public $step = 1;
 
@@ -40,15 +41,24 @@ class extends Component {
                     $this->step = 2;
                 } elseif ($this->type == 'person') {
                     $this->step = 2.5;
+                    
                 }
             }
+        }
+    }
+
+    public function updated($property)
+    {
+        // $property: The name of the current property that was updated
+
+        if ($property === 'type' && $this->type != 'company') {
+            $this->extra = '';
         }
     }
 
     function stepEvent(/*int*/ $step)
     {
         $this->step = $step;
-
         $this->dispatch('parentId', $this->pk);
         // $this->dispatch('parentId', id:$this->pk);
     }
@@ -114,15 +124,22 @@ class extends Component {
             <form wire:submit.prevent='submit' class="flex flex-col max-w-sm mx-auto">
                 <flux:label>{{ __('Subject') }}</flux:label>
                 <flux:error name='subject' />
-                <flux:input type='text' wire:model='subject'  />
+                <flux:input type='text' wire:model='subject' />
 
                 <flux:label>{{ __('Type') }}</flux:label>
                 <flux:error name='type' />
-                <flux:select wire:model='type'>
+                <flux:select wire:model.live='type'>
                     <option value=""></option>
                     <option value="person">{{ __('Person') }}</option>
                     <option value="company">{{ __('Company') }}</option>
                 </flux:select>
+                @if ($type == 'company')
+                    <flux:select wire:model='extra' :label='__("Extra")'>
+                        <option value=""></option>
+                        <option value="extra1">{{ __('Extra 1') }}</option>
+                        <option value="extra2">{{ __('Extra 2') }}</option>
+                    </flux:select>
+                @endif
 
                 <flux:label>{{ __('Message') }}</flux:label>
                 <flux:error name='message' />
@@ -143,4 +160,3 @@ class extends Component {
         @endif
     </div>
 </div>
-
